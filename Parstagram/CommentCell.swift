@@ -1,21 +1,18 @@
 //
-//  PostCell.swift
+//  CommentCell.swift
 //  Parstagram
 //
-//  Created by Kweku Aboagye on 10/23/20.
+//  Created by Kweku Aboagye on 10/28/20.
 //
 
 import UIKit
 
-class PostCell: UITableViewCell {
+class CommentCell: UITableViewCell {
 
-   
-    @IBOutlet weak var photoView: UIImageView!
     
-    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var captionLabel: UILabel!
-    
+    @IBOutlet weak var commentLabel: UILabel!
     
     
     
