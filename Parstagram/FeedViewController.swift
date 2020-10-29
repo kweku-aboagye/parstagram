@@ -59,7 +59,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var loadingMoreView:InfiniteScrollActivityView?
     
     var posts = [PFObject]()
-    var count: Int = 2
+    var count: Int = 20
     let myRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -197,17 +197,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         else if indexPath.row <= comments.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
             let comment = comments[indexPath.row - 1]
-            comment.fetchIfNeededInBackground { (comment, error) in
-                cell.commentLabel.text = comment!["text"] as? String
-                 let user = comment!["author"] as! PFUser
-                user.fetchIfNeededInBackground { (user, error) in
-                    let user = user as! PFUser
-                    cell.nameLabel.text = user.username
-                }
+
+            cell.commentLabel.text = comment["text"] as? String
+            let user = comment["author"] as! PFUser
+            cell.nameLabel.text = user.username
                  
-            }
-           
-            
             return cell
             
         }
@@ -229,10 +223,17 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     */
 
-    func loadMoreData(count : Int) {
+    func loadMoreData() {
         let query = PFQuery(className:"Posts")
         query.includeKey("author")
+        self.count += 1
         query.limit = count
+        
+        // Reload the tableView now that there is new data
+        self.isMoreDataLoading = false
+
+        // Stop the loading indicator
+        self.loadingMoreView!.stopAnimating()
         
         query.findObjectsInBackground { [self] (posts, error) in
             if posts != nil {
@@ -240,11 +241,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 //self.posts.reverse()
                 self.tableView.reloadData()
                 
-                // Reload the tableView now that there is new data
-                self.isMoreDataLoading = false
-
-                // Stop the loading indicator
-                self.loadingMoreView!.stopAnimating()
+                
                 }
             }
         }
@@ -265,8 +262,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 loadingMoreView!.startAnimating()
 
                 // Code to load more results
-                self.count += 1
-                loadMoreData(count: self.count)
+                loadMoreData()
             }
         }
     }
