@@ -52,3 +52,8 @@ The following **bonus** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <img src='http://g.recordit.co/0QWIMllNZJ.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+### Notes
+Describe any challenges encountered while building the app.
+---
+- Pull to refresh and infinite scrolling is still giving a lot of problems. Hope to figure it out soon enough
