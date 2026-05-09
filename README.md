@@ -18,12 +18,6 @@ The following **bonus** features are implemented:
 - [ ] User can add a profile picture. (2pts)
 - [ ] Profile pictures are shown for posts and comments. (2pts)
 
-## Video Walkthrough
-
-Here's a walkthrough of implemented user stories:
-
-<img src='http://g.recordit.co/OaCAOFVdhV.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
 ---
 
 # Parstagram - Part I
@@ -43,17 +37,10 @@ The following **required** functionality is completed:
 - [x] User can view the last 20 posts.
 
 The following **bonus** features are implemented:
-
 - [x] User can pull to refresh.
 - [x] User can load past tweets infinitely.
 
-## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
-
-<img src='http://g.recordit.co/0QWIMllNZJ.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-### Notes
+## Notes
 Describe any challenges encountered while building the app.
 ---
-- Pull to refresh and infinite scrolling is still giving a lot of problems. Hope to figure it out soon enough
